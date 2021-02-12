@@ -5,9 +5,45 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="/vendors/jquery.js"></script>
-    <script src="scripts.js"></script>
+    <script src="client.js"></script>
     <link rel="stylesheet" href="style.css" />
     <title>Document</title>
   </head>
-  <body></body>
+  <body>
+    <h1>Tasks!! I love a good task!</h1>
+
+    <section id="inputSection">
+      <input type="text" id="titleInput" placeholder="What todo..." />
+      <input type="text" id="dateInput" placeholder="Date" />
+      <input type="button" value="Submit" />
+    </section>
+
+    <section id="tableSection">
+      <table>
+        <thead>
+          <tr>
+            <td>Task</td>
+            <td>Date Published</td>
+            <td>Status</td>
+            <td>Change Status</td>
+            <td>Delete</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>TASK</td>
+            <td>01-01-2020</td>
+            <td>Incomplete</td>
+            <td><button>Change</button></td>
+            <td><button>Delete</button></td>
+          </tr>
+          <tr>
+            <td>TASK2</td>
+            <td>01-02-2020</td>
+            <td>Incomplete</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </body>
 </html>

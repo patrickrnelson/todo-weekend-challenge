@@ -1,0 +1,13 @@
+body {
+  background-color: rgb(134, 152, 172);
+}
+
+#tableSection {
+  margin-top: 50px;
+  margin-left: 25px;
+  width: 50%;
+}
+
+table {
+  width: 100%;
+}

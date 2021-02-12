@@ -10,10 +10,10 @@
 
 Form
 
-- [] Task input
-- [] Date field?
-- [] Submit button
-- [] Add & Delete button next to entry
+- [x] Task input
+- [x] Date field?
+- [x] Submit button
+- [] Complete & Delete button next to entry (will be added with new entries)
 
 AJAX
 
@@ -24,7 +24,7 @@ AJAX
 
 - [] GET
 - [] POST
-- []
+- [] button listeners
 
   ### Database
 

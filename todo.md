@@ -13,6 +13,7 @@ Form
 - [] Task input
 - [] Date field?
 - [] Submit button
+- [] Add & Delete button next to entry
 
 AJAX
 

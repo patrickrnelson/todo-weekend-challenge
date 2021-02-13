@@ -34,9 +34,14 @@ function renderTasks(array) {
   $('#tableBody').empty();
   // loop through the tasks array
   for (let task of array) {
+    let taskCompleteClass;
+    // if the task is complete, assign the table row a class 'complete-row'
+    if (task.complete) {
+      taskCompleteClass = 'complete-row';
+    }
     // append each task, and two buttons in the row
     $('#tableBody').append(`
-      <tr>
+      <tr class=${taskCompleteClass}>
         <td>${task.title}</td>
         <td>${task.date_created}</td>
         <td class="completion-status">${task.complete}</td>
@@ -45,13 +50,14 @@ function renderTasks(array) {
       </tr>
       `);
 
-    // If task is complete, change the styling. 
+    // If task is complete, change the styling.
     if (task.complete === 'false') {
       $(this).parent().parent().addClass('complete-bg');
-    // Shouldn't need an else if...
-    // } else if (task.complete === 'true') {
-    //   $(this).parent().parent().removeClass('complete-bg');
-    // }
+      // Shouldn't need an else if...
+      // } else if (task.complete === 'true') {
+      //   $(this).parent().parent().removeClass('complete-bg');
+      // }
+    }
   }
 }
 
@@ -128,7 +134,8 @@ function deleteTask(taskID) {
 function onChangeBtn() {
   console.log('changeBtn click');
   let thisTaskId = $(this).data('id');
-
+  let currentStatus = $(this).parent().siblings('.completion-status').text();
+  console.log('current Status:', currentStatus);
   changeStatus(thisTaskId, currentStatus);
 }
 

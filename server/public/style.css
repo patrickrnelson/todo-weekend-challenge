@@ -12,6 +12,6 @@ table {
   width: 100%;
 }
 
-.complete-bg {
-  background-color: pink;
+.complete-row {
+  background-color: green;
 }

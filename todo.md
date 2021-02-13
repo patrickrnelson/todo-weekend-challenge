@@ -14,20 +14,24 @@ Form
 - [x] Date field?
 - [x] Submit button
 - [x] Complete & Delete button next to entry (will be added with new entries)
+- [x] button listeners
 
 AJAX
 
-- [] ajax GET
-- [] ajax POST
+- [x] ajax GET
+- [x] ajax POST
+- [] ajax PUT
+- [x] ajax DELETE
 
   ### Server
 
-- [] GET
-- [] POST
-- [] button listeners
+- [x] GET
+- [x] POST
+- [] PUT
+- [x] DELETE
 
   ### Database
 
 - [x] Create the database
-- [] Insert some entries into the DB
-- [] Copy the SQL code into the database.sql
+- [x] Insert some entries into the DB
+- [x] Copy the SQL code into the database.sql

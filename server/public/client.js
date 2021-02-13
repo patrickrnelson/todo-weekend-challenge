@@ -32,6 +32,7 @@ function getTasks() {
 function renderTasks(array) {
   // Empty the html where the tasks will live
   $('#tableBody').empty();
+
   // loop through the tasks array
   for (let task of array) {
     let taskCompleteClass;
@@ -41,23 +42,13 @@ function renderTasks(array) {
     }
     // append each task, and two buttons in the row
     $('#tableBody').append(`
-      <tr class=${taskCompleteClass}>
-        <td>${task.title}</td>
-        <td>${task.date_created}</td>
-        <td class="completion-status">${task.complete}</td>
-        <td><button class="changeBtn" data-id="${task.id}">Change</button></td>
-        <td><button class="deleteBtn" data-id="${task.id}">Delete</button></td>
-      </tr>
-      `);
-
-    // If task is complete, change the styling.
-    if (task.complete === 'false') {
-      $(this).parent().parent().addClass('complete-bg');
-      // Shouldn't need an else if...
-      // } else if (task.complete === 'true') {
-      //   $(this).parent().parent().removeClass('complete-bg');
-      // }
-    }
+    <tr>
+      <td class=${taskCompleteClass}>${task.title}</td>
+      <td>${task.date_created}</td>
+      <td><button class="changeBtn" data-id="${task.id}" data-status="${task.complete}">Change</button></td>
+      <td><button class="deleteBtn" data-id="${task.id}">Delete</button></td>
+    </tr>
+    `);
   }
 }
 
@@ -134,7 +125,7 @@ function deleteTask(taskID) {
 function onChangeBtn() {
   console.log('changeBtn click');
   let thisTaskId = $(this).data('id');
-  let currentStatus = $(this).parent().siblings('.completion-status').text();
+  let currentStatus = $(this).data('status');
   console.log('current Status:', currentStatus);
   changeStatus(thisTaskId, currentStatus);
 }

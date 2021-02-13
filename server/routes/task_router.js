@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const moment = require('moment');
+const { resourceLimits } = require('worker_threads');
 
 const pool = require('../modules/pool');
 
@@ -9,7 +11,12 @@ router.get('/', (req, res) => {
   pool
     .query(queryText)
     .then((result) => {
-      // Sends back the results in an object
+      // loop through each object and change the format of the date
+      for (item of result.rows) {
+        item.date_created = moment(item.date_created).format('MM-DD-YYYY');
+      }
+      console.log('result.rows', result.rows);
+      // send back the results in an array of obj's
       res.send(result.rows);
     })
     .catch((error) => {
@@ -54,7 +61,7 @@ router.put('/:id', (req, res) => {
   } else if (completeStatus === 'true') {
     sqlText = `UPDATE tasks SET "complete"=FALSE WHERE id=$1`;
   } else {
-    console.log('Whoops');
+    console.log('Error in PUT');
     res.sendStatus(500);
     return; // Do it now, doesn't run the next set of code
   }

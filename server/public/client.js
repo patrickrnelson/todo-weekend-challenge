@@ -11,6 +11,9 @@ function onReady() {
   $(document).on('click', '.deleteBtn', onDeleteBtn);
 }
 
+/*
+ **** GET
+ */
 function getTasks() {
   $.ajax({
     method: 'GET',
@@ -36,18 +39,15 @@ function renderTasks(array) {
       <tr>
         <td>${task.title}</td>
         <td>${task.date_created}</td>
-        <td>${task.complete}</td>
-        <td><button class="changeBtn">Change</button></td>
+        <td class="completion-status">${task.complete}</td>
+        <td><button class="changeBtn" data-id="${task.id}">Change</button></td>
         <td><button class="deleteBtn" data-id="${task.id}">Delete</button></td>
       </tr>
       `);
   }
 }
 
-function onChangeBtn() {
-  console.log('changeBtn click');
-}
-
+// SUBMIT BUTTON
 function onSubmit() {
   console.log('onSubmit');
   gatherInputs();
@@ -66,8 +66,10 @@ function gatherInputs() {
   postNewTask(newTask);
 }
 
-// after submit,and after inputs have been gathered
-// POST to the server
+/*
+ **** POST
+ */
+// after submit,and after inputs have been gathered, POST
 function postNewTask(data) {
   $.ajax({
     method: 'POST',
@@ -83,8 +85,11 @@ function postNewTask(data) {
     });
 }
 
-// DELETE
+/*
+ **** DELETE
+ */
 
+// DELETE BUTTON
 function onDeleteBtn() {
   // console.log('Delete Click');
   let thisTaskID = $(this).data('id');
@@ -105,5 +110,34 @@ function deleteTask(taskID) {
     .catch(function (err) {
       console.log('error', err);
       alert('ERROR');
+    });
+}
+
+/*
+ **** PUT
+ */
+// CHANGE STATUS BUTTON
+function onChangeBtn() {
+  console.log('changeBtn click');
+  let thisTaskId = $(this).data('id');
+  let currentStatus = $(this).parent().siblings('.completion-status').text();
+
+  changeStatus(thisTaskId, currentStatus);
+}
+
+function changeStatus(id, status) {
+  $.ajax({
+    method: 'PUT',
+    url: `/tasks/${id}`,
+    data: {
+      status: status,
+    },
+  })
+    .then((response) => {
+      getTasks();
+    })
+    .catch((err) => {
+      console.log('error:', err);
+      alert('ERROR Try again l8r');
     });
 }

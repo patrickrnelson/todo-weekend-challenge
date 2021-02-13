@@ -41,19 +41,18 @@ router.post('/', (req, res) => {
 router.put('/:id', (req, res) => {
   console.log('req.body', req.body);
   console.log('req.params', req.params);
+
   let taskID = req.params.id;
 
-  let currentStatus = req.body.currentStatus;
+  let completeStatus = req.body.status;
   let sqlText = '';
 
-  if (currentStatus === 'false') {
-    // if we receive a currentStatus that = 'false'
-    // set the isRead column to True
-    sqlText = `UPDATE books SET "isRead"=TRUE WHERE id=$1`;
-    // else if we receive a statusChange that = 'unread'
-    // set the isRead column to False
-  } else if (currentStatus === 'true') {
-    sqlText = `UPDATE books SET "isRead"=FALSE WHERE id=$1`;
+  if (completeStatus === 'false') {
+    // if we receive a completeStatus that = 'false'
+    // set the complete column to True
+    sqlText = `UPDATE tasks SET "complete"=TRUE WHERE id=$1`;
+  } else if (completeStatus === 'true') {
+    sqlText = `UPDATE tasks SET "complete"=FALSE WHERE id=$1`;
   } else {
     console.log('Whoops');
     res.sendStatus(500);
@@ -61,9 +60,8 @@ router.put('/:id', (req, res) => {
   }
 
   pool
-    .query(sqlText, [bookID])
+    .query(sqlText, [taskID])
     .then((dbRes) => {
-      console.log(dbRes);
       res.sendStatus(200);
     })
     .catch((err) => {

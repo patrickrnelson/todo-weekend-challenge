@@ -7,13 +7,16 @@
     <script src="/vendors/jquery.js"></script>
     <script src="client.js"></script>
     <link rel="stylesheet" href="style.css" />
-    <title>Document</title>
+    <title>ToDo LiSt</title>
   </head>
   <body>
-    <h1>Tasks!! I love a good task!</h1>
+    <h1>---Task List---</h1>
 
     <section id="inputSection">
-      <input type="text" id="titleInput" placeholder="What todo..." />
+      <label id="task-label" for="titleInput" >Add Task</label>
+    </br>
+      <input type="text" id="titleInput" autocomplete="off"/>
+    </br>
       <input type="button" value="Submit" id="submitBtn" />
     </section>
 

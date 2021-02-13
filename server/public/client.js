@@ -38,7 +38,7 @@ function renderTasks(array) {
         <td>${task.date_created}</td>
         <td>${task.complete}</td>
         <td><button class="changeBtn">Change</button></td>
-        <td><button class="deleteBtn">Delete</button></td>
+        <td><button class="deleteBtn" data-id="${task.id}">Delete</button></td>
       </tr>
       `);
   }
@@ -46,10 +46,6 @@ function renderTasks(array) {
 
 function onChangeBtn() {
   console.log('changeBtn click');
-}
-
-function onDeleteBtn() {
-  console.log('deleteBtn click');
 }
 
 function onSubmit() {
@@ -84,5 +80,30 @@ function postNewTask(data) {
     })
     .catch((error) => {
       console.log('error in POST', error);
+    });
+}
+
+// DELETE
+
+function onDeleteBtn() {
+  // console.log('Delete Click');
+  let thisTaskID = $(this).data('id');
+  console.log('Task ID', thisTaskID);
+  deleteTask(thisTaskID);
+}
+
+function deleteTask(taskID) {
+  $.ajax({
+    method: 'DELETE',
+    url: `/tasks/${taskID}`,
+  })
+    .then(function (response) {
+      console.log('successful DELETE');
+      // refresh task data
+      getTasks();
+    })
+    .catch(function (err) {
+      console.log('error', err);
+      alert('ERROR');
     });
 }

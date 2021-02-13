@@ -11,3 +11,7 @@ body {
 table {
   width: 100%;
 }
+
+.complete-bg {
+  background-color: pink;
+}

@@ -44,6 +44,14 @@ function renderTasks(array) {
         <td><button class="deleteBtn" data-id="${task.id}">Delete</button></td>
       </tr>
       `);
+
+    // If task is complete, change the styling. 
+    if (task.complete === 'false') {
+      $(this).parent().parent().addClass('complete-bg');
+    // Shouldn't need an else if...
+    // } else if (task.complete === 'true') {
+    //   $(this).parent().parent().removeClass('complete-bg');
+    // }
   }
 }
 
@@ -120,7 +128,6 @@ function deleteTask(taskID) {
 function onChangeBtn() {
   console.log('changeBtn click');
   let thisTaskId = $(this).data('id');
-  let currentStatus = $(this).parent().siblings('.completion-status').text();
 
   changeStatus(thisTaskId, currentStatus);
 }

@@ -32,18 +32,23 @@ function getTasks() {
 function renderTasks(array) {
   // Empty the html where the tasks will live
   $('#tableBody').empty();
+
   // loop through the tasks array
   for (let task of array) {
+    let taskCompleteClass;
+    // if the task is complete, assign the table row a class 'complete-row'
+    if (task.complete) {
+      taskCompleteClass = 'complete-row';
+    }
     // append each task, and two buttons in the row
     $('#tableBody').append(`
-      <tr>
-        <td>${task.title}</td>
-        <td>${task.date_created}</td>
-        <td class="completion-status">${task.complete}</td>
-        <td><button class="changeBtn" data-id="${task.id}">Change</button></td>
-        <td><button class="deleteBtn" data-id="${task.id}">Delete</button></td>
-      </tr>
-      `);
+    <tr>
+      <td class="${taskCompleteClass} tasks">${task.title}</td>
+      <td class="dates">${task.date_created}</td>
+      <td class="change-buttons"><button class="changeBtn" data-id="${task.id}" data-status="${task.complete}">Change</button></td>
+      <td class="delete-buttons"><button class="deleteBtn" data-id="${task.id}">Delete</button></td>
+    </tr>
+    `);
   }
 }
 
@@ -51,19 +56,22 @@ function renderTasks(array) {
 function onSubmit() {
   console.log('onSubmit');
   gatherInputs();
+  clearInputs();
 }
 
 // Gather inputs for the POST
 function gatherInputs() {
   let taskTitle = $('#titleInput').val();
-  let date = $('#dateInput').val();
 
   let newTask = {
     task: taskTitle,
-    date: date,
   };
 
   postNewTask(newTask);
+}
+
+function clearInputs() {
+  $('#titleInput').val('');
 }
 
 /*
@@ -120,8 +128,8 @@ function deleteTask(taskID) {
 function onChangeBtn() {
   console.log('changeBtn click');
   let thisTaskId = $(this).data('id');
-  let currentStatus = $(this).parent().siblings('.completion-status').text();
-
+  let currentStatus = $(this).data('status');
+  console.log('current Status:', currentStatus);
   changeStatus(thisTaskId, currentStatus);
 }
 

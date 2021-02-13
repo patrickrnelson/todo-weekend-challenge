@@ -15,7 +15,7 @@ Form
 - [x] Submit button
 - [x] Complete & Delete button next to entry (will be added with new entries)
 - [x] button listeners
-- [] Change the css to indicate a completed task
+- [x] Change the css to indicate a completed task
 - [x] Order the tasks so that completed ones go to the bottom
 
 AJAX

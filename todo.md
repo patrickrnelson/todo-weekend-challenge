@@ -13,21 +13,27 @@ Form
 - [x] Task input
 - [x] Date field?
 - [x] Submit button
-- [] Complete & Delete button next to entry (will be added with new entries)
+- [x] Complete & Delete button next to entry (will be added with new entries)
+- [x] button listeners
+- [] Change the css to indicate a completed task
+- [x] Order the tasks so that completed ones go to the bottom
 
 AJAX
 
-- [] ajax GET
-- [] ajax POST
+- [x] ajax GET
+- [x] ajax POST
+- [x] ajax PUT
+- [x] ajax DELETE
 
   ### Server
 
-- [] GET
-- [] POST
-- [] button listeners
+- [x] GET
+- [x] POST
+- [x] PUT
+- [x] DELETE
 
   ### Database
 
 - [x] Create the database
-- [] Insert some entries into the DB
-- [] Copy the SQL code into the database.sql
+- [x] Insert some entries into the DB
+- [x] Copy the SQL code into the database.sql

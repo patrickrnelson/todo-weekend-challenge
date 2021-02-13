@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const tasksRouter = require('./routes/task_router.js');
 
 const app = express();
 
@@ -7,6 +8,8 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static('server/public'));
+
+app.use('/tasks', tasksRouter);
 
 // start the server
 const PORT = 5000;

@@ -6,6 +6,7 @@ function onReady() {
   console.log('JQ');
   getTasks();
   // button listeners
+  $(document).on('click', '#submitBtn', onSubmit);
   $(document).on('click', '.changeBtn', onChangeBtn);
   $(document).on('click', '.deleteBtn', onDeleteBtn);
 }
@@ -49,4 +50,41 @@ function onChangeBtn() {
 
 function onDeleteBtn() {
   console.log('deleteBtn click');
+}
+
+function onSubmit() {
+  console.log('onSubmit');
+  gatherInputs();
+}
+
+// Gather inputs for the POST
+function gatherInputs() {
+  let taskTitle = $('#titleInput').val();
+  let date = $('#dateInput').val();
+
+  let newTask = {
+    task: taskTitle,
+    date: date,
+  };
+
+  postNewTask(newTask);
+}
+
+// after submit,and after inputs have been gathered
+// POST to the server
+function postNewTask(data) {
+  $.ajax({
+    method: 'POST',
+    url: '/tasks',
+    data: {
+      data,
+    },
+  })
+    .then((response) => {
+      console.log('response:', response);
+      // RENDER
+    })
+    .catch((error) => {
+      console.log('error in POST', error);
+    });
 }

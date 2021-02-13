@@ -19,7 +19,12 @@ router.get('/', (req, res) => {
 });
 
 // POST
+router.post('/', (req, res) => {
+  console.log('New task', req.body);
+  let newTask = req.body;
 
+  let queryText = `INSERT INTO "tasks ("title", "date_created")`;
+});
 // PUT
 
 // DELETE

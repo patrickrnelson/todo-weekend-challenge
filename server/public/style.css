@@ -12,6 +12,13 @@ table {
   width: 100%;
 }
 
+td {
+  padding-left: 10px;
+}
+
 .complete-row {
   background-color: green;
+  text-decoration: line-through;
+  opacity: 0.85;
+  border-radius: 10px;
 }

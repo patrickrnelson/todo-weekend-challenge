@@ -23,7 +23,18 @@ router.post('/', (req, res) => {
   console.log('New task', req.body);
   let newTask = req.body;
 
-  let queryText = `INSERT INTO "tasks ("title", "date_created")`;
+  let queryText = `INSERT INTO "tasks" ("title") VALUES ($1);`;
+
+  console.log('Task Title:', newTask.task);
+  pool
+    .query(queryText, [newTask.task])
+    .then((result) => {
+      res.sendStatus(201);
+    })
+    .catch((error) => {
+      console.log(`Error adding new task`, error);
+      res.sendStatus(500);
+    });
 });
 // PUT
 

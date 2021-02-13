@@ -76,13 +76,11 @@ function postNewTask(data) {
   $.ajax({
     method: 'POST',
     url: '/tasks',
-    data: {
-      data,
-    },
+    data: data,
   })
     .then((response) => {
-      console.log('response:', response);
-      // RENDER
+      console.log('POST response:', response);
+      getTasks();
     })
     .catch((error) => {
       console.log('error in POST', error);

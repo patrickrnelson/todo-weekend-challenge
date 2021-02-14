@@ -54,9 +54,12 @@ function renderTasks(array) {
 
 // SUBMIT BUTTON
 function onSubmit() {
-  console.log('onSubmit');
-  gatherInputs();
-  clearInputs();
+  if ($('#titleInput').val() === '') {
+    alert('Error! Missing Input');
+  } else {
+    gatherInputs();
+    clearInputs();
+  }
 }
 
 // Gather inputs for the POST

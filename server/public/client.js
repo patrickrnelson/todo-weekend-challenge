@@ -45,8 +45,8 @@ function renderTasks(array) {
     <tr>
       <td class="${taskCompleteClass} tasks">${task.title}</td>
       <td class="dates">${task.date_created}</td>
-      <td class="change-buttons"><button class="changeBtn" data-id="${task.id}" data-status="${task.complete}">Change</button></td>
-      <td class="delete-buttons"><button class="deleteBtn" data-id="${task.id}">Delete</button></td>
+      <td class="change-buttons "><button class="changeBtn btn-success" data-id="${task.id}" data-status="${task.complete}">Complete</button></td>
+      <td class="delete-buttons"><button class="deleteBtn btn-danger" data-id="${task.id}">Delete</button></td>
     </tr>
     `);
   }

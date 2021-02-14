@@ -1,15 +1,17 @@
 console.log('js');
 
+//const swal = require('sweetalert');
+//import swal from 'sweetalert';
+
 $(document).ready(onReady);
 
 function onReady() {
   console.log('JQ');
   getTasks();
   // button listeners
-  $(document).on('click', '#submitBtn', onSubmit);
+  $(document).on('click', '#btn-submit', onSubmit);
   $(document).on('click', '.changeBtn', onChangeBtn);
   $(document).on('click', '.deleteBtn', onDeleteBtn);
-}
 
 /*
  **** GET
@@ -45,8 +47,16 @@ function renderTasks(array) {
     <tr>
       <td class="${taskCompleteClass} tasks">${task.title}</td>
       <td class="dates">${task.date_created}</td>
-      <td class="change-buttons "><button class="changeBtn btn-success" data-id="${task.id}" data-status="${task.complete}">Complete</button></td>
-      <td class="delete-buttons"><button class="deleteBtn btn-danger" data-id="${task.id}">Delete</button></td>
+      <td class="change-buttons ">
+        <button type="button" class="btn changeBtn btn-success" data-id="${task.id}" data-status="${task.complete}">
+        Complete
+        </button>
+      </td>
+      <td class="delete-buttons">
+        <button type="button" class="btn deleteBtn btn-danger" data-id="${task.id}">
+        Delete
+        </button>
+      </td>
     </tr>
     `);
   }

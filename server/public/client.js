@@ -46,7 +46,7 @@ function renderTasks(array) {
     // append each task, and two buttons in the row
     $('#tableBody').append(`
     <div class="row justify-content-center align-items-center taskRow">
-      <div class="${taskCompleteClass} tasks col-sm-6">${task.title}</div>
+      <div class="${taskCompleteClass} tasks col-sm-5">${task.title}</div>
       <div class="dates col-sm-2">${task.date_created}</div>
       <div class="dates col-sm-2">TASK.COMPLETE</div>
       <div class="change-buttons col-sm-1">

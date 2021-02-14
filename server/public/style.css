@@ -4,8 +4,30 @@ body {
   font-family: sans-serif;
 }
 
+h1 {
+  text-align: center;
+  font-style: italic;
+  font-size: 16px;
+}
+
+#task-label {
+  text-align: center;
+  margin-top: 25px;
+  color: #c04e21;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+h4 {
+  font-weight: bold;
+  color: #d77a5b;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
 #tableSection {
   margin-top: 50px;
+  margin-left: 40px;
   width: 80%;
 }
 
@@ -25,16 +47,6 @@ body {
 }
 
 /* COMMENT ALL
-h1 {
-  text-align: center;
-  font-style: italic;
-  font-size: 16px;
-}
-
-#inputSection {
-  text-align: center;
-  margin-top: 50px;
-}
 
 #task-label {
   color: #c04e21;

@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="/vendors/jquery.js"></script>
     <script src="client.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
@@ -15,38 +16,40 @@
       <h1>---Task List---</h1>
 
       <section id="inputSection">
-        <label id="task-label" for="titleInput" >Add Task</label>
-      </br>
-        <input type="text" id="titleInput" autocomplete="off"/>
-      </br>
-        <input type="button" value="Submit" id="btn-submit" class="btn-dafault"/>
+          <div class="col justify-content-center">
+          <label id="task-label" for="titleInput" class="col-sm5">Add Task</label>
+          <input type="text" id="titleInput" autocomplete="off" class="col-sm-5"/>
+          </div>
+          </br>
+          <input type="button" value="Submit" id="btn-submit" class="btn-dafault"/>
+        
       </section>
 
       <section id="tableSection">
-        <table>
-          <thead>
-            <tr>
-              <td>Task</td>
-              <td>Date Created</td>
-              <td></td>
-              <td></td>
-            </tr>
-          </thead>
-          <tbody id="tableBody">
-            <!-- <tr>
-              <td id=>TASK</td>
-              <td>01-01-2020</td>
-              <td>Incomplete</td>
-              <td><button>Change</button></td>
-              <td><button>Delete</button></td>
-            </tr>
-            <tr>
-              <td>TASK2</td>
-              <td>01-02-2020</td>
-              <td>Incomplete</td>
-            </tr> -->
-          </tbody>
-        </table>
+        <div id="header" class="row justify-content-center align-items-center">
+          <h4 class="col-sm-6">Task</h4>
+          <h4 class="col-sm-2">Date Created</h4>
+          <h4 class="col-sm-2">Date Completed</h4>
+          <h4 class="col-sm-1"></h4>
+          <h4 class="col-sm-1"></h4>
+          </tr>
+        </div>
+        <div id="tableBody">
+          <div class="row justify-content-center">
+            <div class="taskName col-sm-4">TASK</div>
+            <div class="taskeDate">01-01-2020</div>
+            <div class="taskStatus">Incomplete</div>
+            <div><button>Change</button></div>
+            <div><button>Delete</button></div>
+          </div>
+          <div class="rowData justify-content-center">
+            <div class="taskName">TASK2</div>
+            <div class="taskeDate">01-02-2020</div>
+            <div class="taskStatus">Incomplete</div>
+            <div><button>Change</button></div>
+            <div><button>Delete</button></div>
+          </div>
+        </div>
 
       </section>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>

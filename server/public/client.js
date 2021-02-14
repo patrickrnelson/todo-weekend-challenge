@@ -12,6 +12,7 @@ function onReady() {
   $(document).on('click', '#btn-submit', onSubmit);
   $(document).on('click', '.changeBtn', onChangeBtn);
   $(document).on('click', '.deleteBtn', onDeleteBtn);
+}
 
 /*
  **** GET
@@ -44,20 +45,21 @@ function renderTasks(array) {
     }
     // append each task, and two buttons in the row
     $('#tableBody').append(`
-    <tr>
-      <td class="${taskCompleteClass} tasks">${task.title}</td>
-      <td class="dates">${task.date_created}</td>
-      <td class="change-buttons ">
+    <div class="row justify-content-center align-items-center taskRow">
+      <div class="${taskCompleteClass} tasks col-sm-6">${task.title}</div>
+      <div class="dates col-sm-2">${task.date_created}</div>
+      <div class="dates col-sm-2">TASK.COMPLETE</div>
+      <div class="change-buttons col-sm-1">
         <button type="button" class="btn changeBtn btn-success" data-id="${task.id}" data-status="${task.complete}">
         Complete
         </button>
-      </td>
-      <td class="delete-buttons">
+      </div>
+      <div class="delete-buttons col-sm-1">
         <button type="button" class="btn deleteBtn btn-danger" data-id="${task.id}">
         Delete
         </button>
-      </td>
-    </tr>
+      </div>
+    </div>
     `);
   }
 }
@@ -113,9 +115,24 @@ function postNewTask(data) {
 // DELETE BUTTON
 function onDeleteBtn() {
   // console.log('Delete Click');
-  let thisTaskID = $(this).data('id');
-  console.log('Task ID', thisTaskID);
-  deleteTask(thisTaskID);
+  swal({
+    title: 'Confirm Delete',
+    text: 'Deletes are PERMANENT',
+    icon: 'warning',
+    buttons: true,
+  }).then((deleteConfirm) => {
+    if (deleteConfirm) {
+      swal('DELETED');
+      let thisTaskID = $(this).data('id');
+      //console.log('Task ID', thisTaskID);
+      deleteTask(thisTaskID);
+    } else {
+      swal('Delete Cancelled');
+    }
+  });
+  // let thisTaskID = $(this).data('id');
+  // console.log('Task ID', thisTaskID);
+  // deleteTask(thisTaskID);
 }
 
 function deleteTask(taskID) {

@@ -4,6 +4,27 @@ body {
   font-family: sans-serif;
 }
 
+#tableSection {
+  margin-top: 50px;
+  width: 80%;
+}
+
+#tableBody {
+  margin-top: 10px;
+}
+
+.taskRow {
+  margin-top: 5px;
+}
+
+.complete-row {
+  background-color: #5c946e;
+  text-decoration: line-through;
+  opacity: 0.85;
+  border-radius: 10px;
+}
+
+/* COMMENT ALL
 h1 {
   text-align: center;
   font-style: italic;
@@ -37,11 +58,7 @@ h1 {
   margin-top: 10px;
 }
 
-#tableSection {
-  margin-top: 50px;
-  margin-left: 25px;
-  width: 80%;
-}
+
 
 table {
   width: 100%;
@@ -84,9 +101,4 @@ tbody {
   padding-left: 1%;
 }
 
-.complete-row {
-  background-color: #5c946e;
-  text-decoration: line-through;
-  opacity: 0.85;
-  border-radius: 10px;
-}
+
